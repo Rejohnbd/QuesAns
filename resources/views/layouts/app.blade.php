@@ -21,6 +21,9 @@
         @if(Auth::user()->role->slug == 'admin')
         @include('components.admin.topbar')
         @include('components.admin.sidebar')
+        @elseif(Auth::user()->role->slug == 'moderator')
+        @include('components.moderator.topbar')
+        @include('components.moderator.sidebar')
         @endif
 
         <div class="content-wrapper">

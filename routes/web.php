@@ -7,6 +7,8 @@ use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\UserController;
+// Moderator
+use App\Http\Controllers\Moderator\DashboardController as ModeratorDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth', 'moderator'])->group(function () {
+    Route::get('/moderator-dashboard', [ModeratorDashboardController::class, 'index'])->name('moderator-dashboard');
 });
 
 require __DIR__ . '/auth.php';

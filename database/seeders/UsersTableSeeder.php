@@ -25,15 +25,15 @@ class UsersTableSeeder extends Seeder
 
         User::create([
             'role_id'   => 2,
-            'name'      => 'Client User',
-            'email'     => 'client@mail.com',
+            'name'      => 'Moderator User',
+            'email'     => 'moderator@mail.com',
             'password'  => Hash::make('password')
         ]);
 
         User::create([
             'role_id'   => 3,
-            'name'      => 'Employee User',
-            'email'     => 'employee@mail.com',
+            'name'      => 'Host User',
+            'email'     => 'host@mail.com',
             'password'  => Hash::make('password')
         ]);
     }

@@ -22,13 +22,13 @@ class RoleTableSeeder extends Seeder
         ]);
 
         Role::create([
-            'name'  => 'Client',
-            'slug'  => Str::slug('Client')
+            'name'  => 'Moderator',
+            'slug'  => Str::slug('Moderator')
         ]);
 
         Role::create([
-            'name'  => 'Employee',
-            'slug'  => Str::slug('Employee')
+            'name'  => 'Host',
+            'slug'  => Str::slug('Host')
         ]);
     }
 }

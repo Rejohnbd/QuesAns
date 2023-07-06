@@ -23,8 +23,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @if(Request::is('unanswered-question') || Request::is('answered-question')) menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if(Request::is('unanswered-question') || Request::is('answered-question')) active @endif">
+                <li class="nav-item @if(Request::is('unanswered-question') || Request::is('assigned-question')) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(Request::is('unanswered-question') || Request::is('assigned-question')) active @endif">
                         <i class="nav-icon far fa-question-circle"></i>
                         <p>
                             Questions
@@ -39,9 +39,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('answered-question') }}" class="nav-link @if(Request::is('answered-question')) active @endif">
+                            <a href="{{ route('assigned-question') }}" class="nav-link @if(Request::is('assigned-question')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Answered Questions</p>
+                                <p>Assigned Questions</p>
                             </a>
                         </li>
                     </ul>

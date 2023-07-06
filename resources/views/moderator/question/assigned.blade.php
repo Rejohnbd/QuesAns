@@ -7,7 +7,7 @@
 @component('components.breadcrumb', [
 'title' => 'Dashboard',
 'dashboard_url' => 'moderator-dashboard',
-'activePage' => 'Answered Question'
+'activePage' => 'Assigned Question'
 ])
 @endcomponent
 <div class="container-fluid">
@@ -17,7 +17,7 @@
                 <div class="card-header ui-sortable-handle" style="cursor: move;">
                     <h3 class="card-title">
                         <i class="ion ion-clipboard mr-1"></i>
-                        Answered Question
+                        Assigned Question
                     </h3>
                 </div>
                 <div class="card-body">

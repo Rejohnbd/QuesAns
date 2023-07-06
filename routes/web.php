@@ -45,7 +45,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'moderator'])->group(function () {
     Route::get('/moderator-dashboard', [ModeratorDashboardController::class, 'index'])->name('moderator-dashboard');
     Route::get('/unanswered-question', [ModeratorQuestionController::class, 'unansweredQuestion'])->name('unanswered-question');
-    Route::get('/answered-question', [ModeratorQuestionController::class, 'answeredQuestion'])->name('answered-question');
+    Route::post('/assign-question', [ModeratorQuestionController::class, 'assignQuestion'])->name('assign-question');
+    Route::get('/assigned-question', [ModeratorQuestionController::class, 'assignedQuestion'])->name('assigned-question');
 });
 
 Route::middleware(['auth', 'host'])->group(function () {

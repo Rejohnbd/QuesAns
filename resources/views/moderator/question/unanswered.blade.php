@@ -37,7 +37,9 @@
                                 <td>{{ $question->name }}</td>
                                 <td>{{ $question->question }}</td>
                                 <td>
-                                    Action
+                                    <button data-id="{{ $question->id }}" class="btn btn-primary assingQuestion">
+                                        <i class="fas fa-download"></i> Assign
+                                    </button>
                                 </td>
                             </tr>
                             @empty
@@ -57,4 +59,48 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade show" id="assingQustionModal" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{ route('assign-question') }}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h4 class="modal-title">Default Modal</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="hidden" name="question_id" id="questionId" />
+                        <label for="assingToHost">Select Host</label>
+                        <select class="custom-select rounded-0" name="host_id" id="assingToHost">
+                            @foreach($allHosts as $host)
+                            <option value="{{ $host->id }}">{{ $host->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal" aria-label="Close">Close</button>
+                    <button type="submit" class="btn btn-primary">Assing To Host</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('scripts')
+<script>
+    $('document').ready(function() {
+        $('.assingQuestion').on('click', function() {
+            let questionId = $(this).attr("data-id");
+            console.log('click', questionId);
+            $('#questionId').val(questionId);
+            $('#assingQustionModal').modal('show');
+        });
+    });
+</script>
 @endsection

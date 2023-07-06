@@ -15,7 +15,7 @@
         <div class="col-lg-4 col-6">
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3></h3>
+                    <h3>{{ $totalQuestions }}</h3>
                     <p>Total Question</p>
                 </div>
                 <div class="icon">
@@ -27,7 +27,7 @@
         <div class="col-lg-4 col-6">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3></h3>
+                    <h3>{{ $answeredQuestions }}</h3>
                     <p>Answered Question</p>
                 </div>
                 <div class="icon">
@@ -40,7 +40,7 @@
         <div class="col-lg-4 col-6">
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3></h3>
+                    <h3>{{ $unAnsweredQuestions }}</h3>
                     <p>Unanswered Question</p>
                 </div>
                 <div class="icon">

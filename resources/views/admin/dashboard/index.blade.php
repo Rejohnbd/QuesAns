@@ -41,7 +41,7 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ $employeeUser }}</h3>
-                    <p>Total Employee</p>
+                    <p>Total Moderator User</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-users"></i>
@@ -54,7 +54,7 @@
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>{{ $clientUser }}</h3>
-                    <p>Total Client</p>
+                    <p>Total Host User</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-users"></i>

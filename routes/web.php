@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\DesignationController;
 use App\Http\Controllers\Admin\UserController;
 // Moderator
 use App\Http\Controllers\Moderator\DashboardController as ModeratorDashboardController;
+// Host
+use App\Http\Controllers\Host\DashboardController as HostDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'moderator'])->group(function () {
     Route::get('/moderator-dashboard', [ModeratorDashboardController::class, 'index'])->name('moderator-dashboard');
+});
+
+Route::middleware(['auth', 'host'])->group(function () {
+    Route::get('/dashboard', [HostDashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__ . '/auth.php';

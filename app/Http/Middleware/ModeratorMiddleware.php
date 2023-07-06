@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ClientMiddleware
+class ModeratorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class ClientMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role->slug == 'client') :
+        if (Auth::check() && Auth::user()->role->slug == 'moderator') :
             return $next($request);
         else :
             Auth::logout();

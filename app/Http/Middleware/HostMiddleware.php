@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EmployeeMiddleware
+class HostMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class EmployeeMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role->slug == 'employee') :
+        if (Auth::check() && Auth::user()->role->slug == 'host') :
             return $next($request);
         else :
             Auth::logout();

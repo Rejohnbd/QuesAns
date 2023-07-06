@@ -31,24 +31,31 @@
                     <h4 class="modal-title">Submit Your Question</h4>
                 </div>
                 <div class="modal-body customer-box">
-                    <form role="form" class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input class="form-control" name="name" placeholder="Enter Name" type="text">
+                    <div class="alert alert-success" id="successWrapper" role="alert" style="display: none;">
+                        Question Submited Successfully
+                    </div>
+                    <div id="formWrapper">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input class="form-control" id="nameValue" placeholder="Enter Name" type="text">
+                                    <div class="invalid-feedback" id="nameError">Please Provide Name</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" id="questionValue" placeholder="Enter Question" col="3" type="text"></textarea>
+                                    <div class="invalid-feedback" id="questionError">Please provide a valid city.</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 d-flex justify-content-between">
+                                    <button id="submitQuestion" class="btn btn-light btn-radius btn-brd grd1">Submit</button>
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="btn btn-light btn-radius btn-brd grd1">Cancel</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <textarea class="form-control" name="question" placeholder="Enter Question" col="3" type="text"></textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 d-flex justify-content-between">
-                                <button type="submit" class="btn btn-light btn-radius btn-brd grd1">Submit</button>
-                                <button type="button" data-dismiss="modal" aria-hidden="true" class="btn btn-light btn-radius btn-brd grd1">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,6 +72,54 @@
             mode: 'horizontal',
             verticalStartPosition: 'left',
             visibleItems: 4
+        });
+
+        $(document).ready(function() {
+            $('#submitQuestion').on('click', function() {
+                $('#questionValue').removeClass('is-invalid');
+                $('#questionError').css('display', 'none');
+                $('#nameValue').removeClass('is-invalid');
+                $('#nameError').css('display', 'none');
+
+                let name = $('#nameValue').val();
+                let question = $('#questionValue').val();
+
+                if (name.length < 5) {
+                    $('#nameValue').addClass('is-invalid');
+                    $('#nameError').css('display', 'block');
+                }
+
+                if (question.length < 10) {
+                    $('#questionValue').addClass('is-invalid');
+                    $('#questionError').css('display', 'block');
+                }
+
+                if (name.length > 5 && question.length > 10) {
+                    $.ajax({
+                        url: "{{ route('submit-question') }}",
+                        method: 'POST',
+                        data: {
+                            name: name,
+                            question: question,
+                            _token: '{{csrf_token()}}',
+                        },
+                        success: function(response) {
+                            console.log(response)
+                            if (response.status) {
+                                $('#formWrapper').css('display', 'none');
+                                $('#successWrapper').css('display', 'block');
+                                setTimeout(function() {
+                                    $('#login').modal('hide');
+                                }, 3000);
+                            }
+                        },
+                        error: function(err) {
+                            $('#login').modal('hide');
+                            console.log(err);
+                        }
+                    });
+                }
+            });
         });
     </script>
 </body>

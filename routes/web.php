@@ -24,6 +24,7 @@ use App\Http\Controllers\Host\DashboardController as HostDashboardController;
 */
 
 Route::get('/', [FrontEndController::class, 'index']);
+Route::post('submit-question', [FrontEndController::class, 'submitQuestion'])->name('submit-question');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

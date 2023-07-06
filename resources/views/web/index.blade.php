@@ -4,7 +4,7 @@
 
 @section('content')
 <header class="top-navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="assets/images/logo.png" alt="" />

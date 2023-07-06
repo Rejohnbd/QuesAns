@@ -62,12 +62,6 @@
                                 <p class="text">User Roles</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('designations.index') }}" class="nav-link @if(Request::is('designations*')) active @endif">
-                                <i class="nav-icon far fa-circle text-success"></i>
-                                <p>Designation</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
             </ul>

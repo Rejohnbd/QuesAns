@@ -46,7 +46,7 @@
                 <div class="icon">
                     <i class="far fa-question-circle"></i>
                 </div>
-                <a href="" class="small-box-footer">Show Detials <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('unanswered-question') }}" class="small-box-footer">Show Detials <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     </div>

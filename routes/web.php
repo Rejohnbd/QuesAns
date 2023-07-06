@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontEndController;
 // Admin
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DesignationController;
@@ -18,9 +19,7 @@ use App\Http\Controllers\Admin\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontEndController::class, 'index']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

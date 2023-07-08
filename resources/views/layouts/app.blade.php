@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
@@ -38,8 +39,67 @@
 
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
     @yield('scripts')
+    @if(Auth::user()->role->slug == 'moderator')
+    <script>
+        $(document).ready(function() {
+            let countSidebarUnansQues = 0;
+            let countSidebarAssignQues = 0;
+            let countSidebarAnsweredQues = 0;
+            $.ajax({
+                url: "{{ route('moderator-sidebar-status') }}",
+                method: 'POST',
+                data: {
+                    _token: '{{csrf_token()}}',
+                },
+                success: function(response) {
+                    countSidebarUnansQues = response.unAnsweredQuestions;
+                    countSidebarAssignQues = response.assignedQuestions;
+                    countSidebarAnsweredQues = response.answeredQuestions;
+
+                    $('#countSidebarUnansQues').text(countSidebarUnansQues);
+                    $('#countSidebarAssignQues').text(countSidebarAssignQues);
+                    $('#countSidebarAnsweredQues').text(countSidebarAnsweredQues);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+
+            setInterval(function() {
+                $.ajax({
+                    url: "{{ route('moderator-sidebar-status') }}",
+                    method: 'POST',
+                    data: {
+                        _token: '{{csrf_token()}}',
+                    },
+                    success: function(response) {
+                        if (response.unAnsweredQuestions > countSidebarUnansQues) {
+                            toastr.info('New Question Added')
+                        }
+
+                        if (response.answeredQuestions < countSidebarAnsweredQues) {
+                            toastr.success('Answered A Question')
+                        }
+
+                        countSidebarUnansQues = response.unAnsweredQuestions;
+                        countSidebarAssignQues = response.assignedQuestions;
+                        countSidebarAnsweredQues = response.answeredQuestions;
+
+                        $('#countSidebarUnansQues').text(countSidebarUnansQues);
+                        $('#countSidebarAssignQues').text(countSidebarAssignQues);
+                        $('#countSidebarAnsweredQues').text(countSidebarAnsweredQues);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            }, 1000 * 60 * 0.5);
+        });
+    </script>
+    @endif
 </body>
 
 </html>

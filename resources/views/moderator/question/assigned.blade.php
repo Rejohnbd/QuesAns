@@ -37,14 +37,14 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $question->name }}</td>
                                 <td>{{ $question->question }}</td>
-                                <td></td>
+                                <td>{{ $question->host->name }}</td>
                                 <td>
                                     Action
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="text-center">No Answered Question</td>
+                                <td colspan="5" class="text-center">No Assigned Question</td>
                             </tr>
                             @endforelse
                         </tbody>

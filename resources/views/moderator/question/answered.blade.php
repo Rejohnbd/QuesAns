@@ -32,7 +32,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($assignedQuestions as $question)
+                            @forelse($answeredQuestions as $question)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $question->name }}</td>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $assignedQuestions->render() }}
+                        {{ $answeredQuestions->render() }}
                     </ul>
                 </div>
             </div>

@@ -32,8 +32,8 @@ Route::post('submit-question', [FrontEndController::class, 'submitQuestion'])->n
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin-dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
-    Route::get('/user-roles', [DashboardController::class, 'userRoles'])->name('user-roles');
+    Route::get('admin-dashboard', [DashboardController::class, 'index'])->name('admin-dashboard');
+    Route::get('user-roles', [DashboardController::class, 'userRoles'])->name('user-roles');
     Route::resource('users', UserController::class);
     Route::resource('designations', DesignationController::class);
     // 
@@ -43,14 +43,16 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'moderator'])->group(function () {
-    Route::get('/moderator-dashboard', [ModeratorDashboardController::class, 'index'])->name('moderator-dashboard');
-    Route::get('/unanswered-question', [ModeratorQuestionController::class, 'unansweredQuestion'])->name('unanswered-question');
-    Route::post('/assign-question', [ModeratorQuestionController::class, 'assignQuestion'])->name('assign-question');
-    Route::get('/assigned-question', [ModeratorQuestionController::class, 'assignedQuestion'])->name('assigned-question');
+    Route::get('moderator-dashboard', [ModeratorDashboardController::class, 'index'])->name('moderator-dashboard');
+    Route::post('moderator-sidebar-status', [ModeratorDashboardController::class, 'moderatorSidebarStatus'])->name('moderator-sidebar-status');
+    Route::get('unanswered-question', [ModeratorQuestionController::class, 'unansweredQuestion'])->name('unanswered-question');
+    Route::post('assign-question', [ModeratorQuestionController::class, 'assignQuestion'])->name('assign-question');
+    Route::get('assigned-question', [ModeratorQuestionController::class, 'assignedQuestion'])->name('assigned-question');
+    Route::get('answered-question', [ModeratorQuestionController::class, 'answeredQuestion'])->name('answered-question');
 });
 
 Route::middleware(['auth', 'host'])->group(function () {
-    Route::get('/dashboard', [HostDashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [HostDashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__ . '/auth.php';

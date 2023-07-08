@@ -27,6 +27,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Name</th>
                                 <th>Question</th>
+                                <th>Question Time</th>
                                 <th>Active</th>
                             </tr>
                         </thead>
@@ -36,6 +37,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $question->name }}</td>
                                 <td>{{ $question->question }}</td>
+                                <td>{{ $question->created_at }}</td>
                                 <td>
                                     <button data-id="{{ $question->id }}" class="btn btn-primary assingQuestion">
                                         <i class="fas fa-download"></i> Assign

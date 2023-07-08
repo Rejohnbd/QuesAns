@@ -22,6 +22,12 @@ class QuestionController extends Controller
         return view('moderator.question.assigned', compact('assignedQuestions'));
     }
 
+    public function answeredQuestion()
+    {
+        $answeredQuestions = Question::where('status', 2)->orderBy('id', 'desc')->paginate(10);
+        return view('moderator.question.answered', compact('answeredQuestions'));
+    }
+
     public function assignQuestion(Request $request)
     {
         // Need To Validation Check

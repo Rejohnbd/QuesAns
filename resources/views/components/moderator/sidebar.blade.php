@@ -23,8 +23,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item @if(Request::is('unanswered-question') || Request::is('assigned-question')) menu-is-opening menu-open @endif">
-                    <a href="#" class="nav-link @if(Request::is('unanswered-question') || Request::is('assigned-question')) active @endif">
+                <li class="nav-item @if(Request::is('unanswered-question') || Request::is('assigned-question') || Request::is('answered-question')) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(Request::is('unanswered-question') || Request::is('assigned-question') || Request::is('answered-question')) active @endif">
                         <i class="nav-icon far fa-question-circle"></i>
                         <p>
                             Questions
@@ -35,13 +35,19 @@
                         <li class="nav-item">
                             <a href="{{ route('unanswered-question') }}" class="nav-link @if(Request::is('unanswered-question')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Unanswered Questions</p>
+                                <p>Unanswered Questions <span class="badge badge-danger right" id="countSidebarUnansQues">0</span></p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('assigned-question') }}" class="nav-link @if(Request::is('assigned-question')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Assigned Questions</p>
+                                <p>Assigned Questions <span class="badge badge-info right" id="countSidebarAssignQues">0</span></p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('answered-question') }}" class="nav-link @if(Request::is('answered-question')) active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Answered Questions <span class="badge badge-success right" id="countSidebarAnsweredQues">0</span></p>
                             </a>
                         </li>
                     </ul>

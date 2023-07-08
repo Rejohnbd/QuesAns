@@ -68,7 +68,7 @@
             <form action="{{ route('assign-question') }}" method="post">
                 @csrf
                 <div class="modal-header">
-                    <h4 class="modal-title">Default Modal</h4>
+                    <h4 class="modal-title">Question Assign To Host User</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

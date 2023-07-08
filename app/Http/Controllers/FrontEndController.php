@@ -33,9 +33,14 @@ class FrontEndController extends Controller
             $newQuestion->name = $request->name;
             $newQuestion->question = $request->question;
             $newQuestion->save();
-            return response()->json([
-                'status' => true
-            ]);
+
+            flash()->addSuccess('Question Submitted Successfully');
+
+            return redirect()->back();
+
+        // return response()->json([
+        //     'status' => true
+        // ]);
         endif;
     }
 }

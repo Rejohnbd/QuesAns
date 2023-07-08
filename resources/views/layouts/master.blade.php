@@ -35,26 +35,29 @@
                         Question Submited Successfully
                     </div>
                     <div id="formWrapper">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <input class="form-control" id="nameValue" placeholder="Enter Name" type="text">
-                                    <div class="invalid-feedback" id="nameError">Please Provide Name</div>
+                        <form action="{{ route('submit-question') }}" method="post">
+                            @csrf
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" name="name" id="nameValue" placeholder="Enter Name" type="text">
+                                        <div class="invalid-feedback" id="nameError">Please Provide Name</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control" name="question" id="questionValue" placeholder="Enter Question" col="3" type="text"></textarea>
+                                        <div class="invalid-feedback" id="questionError">Please provide a valid city.</div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-light btn-radius btn-brd grd1">Submit</button>
+                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="btn btn-light btn-radius btn-brd grd1">Cancel</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <textarea class="form-control" id="questionValue" placeholder="Enter Question" col="3" type="text"></textarea>
-                                    <div class="invalid-feedback" id="questionError">Please provide a valid city.</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 d-flex justify-content-between">
-                                    <button id="submitQuestion" class="btn btn-light btn-radius btn-brd grd1">Submit</button>
-                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="btn btn-light btn-radius btn-brd grd1">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

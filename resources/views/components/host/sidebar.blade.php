@@ -35,13 +35,13 @@
                         <li class="nav-item">
                             <a href="{{ route('question-unanswered') }}" class="nav-link @if(Request::is('question-unanswered')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Question List</p>
+                                <p>Question List <span class="badge badge-danger right" id="countSidebarHostUnQues">0</span></p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('question-answered-all') }}" class="nav-link @if(Request::is('question-answered-all')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Answer List</p>
+                                <p>Answer List <span class="badge badge-success right" id="countSidebarHostAnsQues">0</span></p>
                             </a>
                         </li>
                     </ul>

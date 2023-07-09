@@ -15,4 +15,16 @@ class DashboardController extends Controller
         $answeredQuestions = Question::where('user_id', Auth::user()->id)->where('status', 2)->count();
         return view('host.dashboard.index', compact('assignedQuestions', 'answeredQuestions'));
     }
+
+    public function hostSidebarStatus(Request $request)
+    {
+        $unAnsweredQuestions = Question::where('user_id', Auth::user()->id)->where('status', 1)->count();
+        $answeredQuestions = Question::where('user_id', Auth::user()->id)->where('status', 2)->count();
+
+        return response()->json([
+            'status'                => true,
+            'unAnsweredQuestions'   => $unAnsweredQuestions,
+            'answeredQuestions'     => $answeredQuestions
+        ]);
+    }
 }

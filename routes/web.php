@@ -54,6 +54,7 @@ Route::middleware(['auth', 'moderator'])->group(function () {
 
 Route::middleware(['auth', 'host'])->group(function () {
     Route::get('dashboard', [HostDashboardController::class, 'index'])->name('dashboard');
+    Route::post('host-sidebar-status', [HostDashboardController::class, 'hostSidebarStatus'])->name('host-sidebar-status');
     Route::get('question-unanswered', [HostQuestionController::class, 'questionUnanswered'])->name('question-unanswered');
     Route::post('question-answered', [HostQuestionController::class, 'questionAanswered'])->name('question-answered');
     Route::get('question-answered-all', [HostQuestionController::class, 'questionAansweredAll'])->name('question-answered-all');

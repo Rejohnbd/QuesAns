@@ -100,6 +100,56 @@
         });
     </script>
     @endif
+    @if(Auth::user()->role->slug == 'host')
+    <script>
+        $(document).ready(function() {
+            let countSidebarHostUnQues = 0;
+            let countSidebarHostAnsQues = 0;
+
+            $.ajax({
+                url: "{{ route('host-sidebar-status') }}",
+                method: 'POST',
+                data: {
+                    _token: '{{csrf_token()}}',
+                },
+                success: function(response) {
+                    countSidebarHostUnQues = response.unAnsweredQuestions;
+                    countSidebarHostAnsQues = response.answeredQuestions;
+
+                    $('#countSidebarHostUnQues').text(countSidebarHostUnQues);
+                    $('#countSidebarHostAnsQues').text(countSidebarHostAnsQues);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+
+            setInterval(function() {
+                $.ajax({
+                    url: "{{ route('host-sidebar-status') }}",
+                    method: 'POST',
+                    data: {
+                        _token: '{{csrf_token()}}',
+                    },
+                    success: function(response) {
+                        if (response.unAnsweredQuestions > countSidebarHostUnQues) {
+                            toastr.info('New Question Added')
+                        }
+
+                        countSidebarHostUnQues = response.unAnsweredQuestions;
+                        countSidebarHostAnsQues = response.answeredQuestions;
+
+                        $('#countSidebarHostUnQues').text(countSidebarHostUnQues);
+                        $('#countSidebarHostAnsQues').text(countSidebarHostAnsQues);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            }, 1000 * 60 * 0.25);
+        });
+    </script>
+    @endif
 </body>
 
 </html>

@@ -19,4 +19,14 @@ class Question extends Model
     {
         return Carbon::parse($date)->format('d/m/Y g:i A');
     }
+
+    public function getAssignTimeAttribute($date)
+    {
+        return Carbon::parse($date)->format('d/m/Y g:i A');
+    }
+
+    public function getAnswerTimeAttribute($date)
+    {
+        return Carbon::parse($date)->format('d/m/Y g:i A');
+    }
 }

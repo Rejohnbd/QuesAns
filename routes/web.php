@@ -12,6 +12,7 @@ use App\Http\Controllers\Moderator\DashboardController as ModeratorDashboardCont
 use App\Http\Controllers\Moderator\QuestionController as ModeratorQuestionController;
 // Host
 use App\Http\Controllers\Host\DashboardController as HostDashboardController;
+use App\Http\Controllers\Host\QuestionController as HostQuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,9 @@ Route::middleware(['auth', 'moderator'])->group(function () {
 
 Route::middleware(['auth', 'host'])->group(function () {
     Route::get('dashboard', [HostDashboardController::class, 'index'])->name('dashboard');
+    Route::get('question-unanswered', [HostQuestionController::class, 'questionUnanswered'])->name('question-unanswered');
+    Route::post('question-answered', [HostQuestionController::class, 'questionAanswered'])->name('question-answered');
+    Route::get('question-answered-all', [HostQuestionController::class, 'questionAansweredAll'])->name('question-answered-all');
 });
 
 require __DIR__ . '/auth.php';

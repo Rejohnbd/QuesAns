@@ -35,7 +35,7 @@ class FrontEndController extends Controller
             $newQuestion = new Question;
             $newQuestion->first_name    = $request->first_name;
             $newQuestion->last_name     = $request->last_name;
-            $newQuestion->phone         = $request->country_code . '' . $request->phone;
+            $newQuestion->phone         = $request->country_code . $request->phone;
             $newQuestion->question      = $request->question;
             $newQuestion->save();
 

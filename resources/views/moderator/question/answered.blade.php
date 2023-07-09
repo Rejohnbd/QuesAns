@@ -26,8 +26,10 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Name</th>
+                                <th>Phone</th>
                                 <th>Question</th>
                                 <th>Host Name</th>
+                                <th>Answer Date Time</th>
                                 <th>Active</th>
                             </tr>
                         </thead>
@@ -35,16 +37,17 @@
                             @forelse($answeredQuestions as $question)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $question->name }}</td>
+                                <td>{{ $question->first_name }} {{ $question->last_name }}</td>
+                                <td>{{ $question->phone }}</td>
                                 <td>{{ $question->question }}</td>
-                                <td></td>
+                                <td>{{ $question->answer_time }}</td>
                                 <td>
                                     Action
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="text-center">No Answered Question</td>
+                                <td colspan="7" class="text-center">No Answered Question</td>
                             </tr>
                             @endforelse
                         </tbody>

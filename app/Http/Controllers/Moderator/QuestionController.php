@@ -36,6 +36,7 @@ class QuestionController extends Controller
 
         $questionInfo = Question::find($questionId);
         $questionInfo->user_id = $hostId;
+        $questionInfo->assign_time = now();
         $questionInfo->status = 1;
         $questionInfo->save();
 

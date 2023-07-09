@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'Answered List')
 
 @section('content')
 
 @component('components.breadcrumb', [
 'title' => 'Dashboard',
-'dashboard_url' => 'moderator-dashboard',
-'activePage' => 'Assigned Question'
+'dashboard_url' => 'dashboard',
+'activePage' => 'Answered List'
 ])
 @endcomponent
 <div class="container-fluid">
@@ -17,7 +17,7 @@
                 <div class="card-header ui-sortable-handle" style="cursor: move;">
                     <h3 class="card-title">
                         <i class="ion ion-clipboard mr-1"></i>
-                        Assigned Question
+                        Answer List
                     </h3>
                 </div>
                 <div class="card-body">
@@ -28,27 +28,21 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Question</th>
-                                <th>Host Name</th>
-                                <th>Assign Date Time</th>
-                                <th>Active</th>
+                                <th>Answer Date Time</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($assignedQuestions as $question)
+                            @forelse($answeredQuestions as $question)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $question->first_name }} {{ $question->last_name }}</td>
                                 <td>{{ $question->phone }}</td>
                                 <td>{{ $question->question }}</td>
-                                <td>{{ $question->host->name }}</td>
-                                <td>{{ $question->assign_time }}</td>
-                                <td>
-                                    Action
-                                </td>
+                                <td>{{ $question->answer_time }}</td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7" class="text-center">No Assigned Question</td>
+                                <td colspan="5" class="text-center">No Answered Question</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -56,7 +50,7 @@
                 </div>
                 <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
-                        {{ $assignedQuestions->render() }}
+                        {{ $answeredQuestions->render() }}
                     </ul>
                 </div>
             </div>

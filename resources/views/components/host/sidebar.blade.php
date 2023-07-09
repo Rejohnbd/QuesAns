@@ -23,8 +23,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item @if(Request::is('question-unanswered') || Request::is('question-answered-all')) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(Request::is('question-unanswered') || Request::is('question-answered-all')) active @endif">
                         <i class="nav-icon far fa-question-circle"></i>
                         <p>
                             Questions
@@ -33,9 +33,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('question-unanswered') }}" class="nav-link @if(Request::is('question-unanswered')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Question List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('question-answered-all') }}" class="nav-link @if(Request::is('question-answered-all')) active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Answer List</p>
                             </a>
                         </li>
                     </ul>

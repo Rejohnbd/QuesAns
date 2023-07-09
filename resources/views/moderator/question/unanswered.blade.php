@@ -19,6 +19,9 @@
                         <i class="ion ion-clipboard mr-1"></i>
                         Unanswered Question
                     </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-primary btn-sm float-right btnRefresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped">
@@ -104,6 +107,10 @@
             $('#questionId').val(questionId);
             $('#assingQustionModal').modal('show');
         });
+
+        $('.btnRefresh').on('click', function() {
+            window.location.reload();
+        })
     });
 </script>
 @endsection

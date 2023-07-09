@@ -99,7 +99,6 @@
     $('document').ready(function() {
         $('.assingQuestion').on('click', function() {
             let questionId = $(this).attr("data-id");
-            console.log('click', questionId);
             $('#questionId').val(questionId);
             $('#assingQustionModal').modal('show');
         });

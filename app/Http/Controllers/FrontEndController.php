@@ -17,27 +17,30 @@ class FrontEndController extends Controller
         $validator = validator(
             $request->all(),
             [
-                'name'              => 'required',
-                'question'          => 'required',
+                'first_name'    => 'required',
+                'last_name'     => 'required',
+                'phone'         => 'required',
+                'question'      => 'required',
             ],
             [
-                'name.required'     => 'Vehicle is Required',
+                'first_name.required'     => 'First Name is Required',
+                'last_name.required'     => 'Last Name is Required',
                 'question.required' => 'Provide Valid Vehicle Info',
             ]
         );
 
         if ($validator->fails()) :
-        // Need to work Here
+        // Need to work Here When Goes to new page
         else :
             $newQuestion = new Question;
-            $newQuestion->name = $request->name;
-            $newQuestion->question = $request->question;
+            $newQuestion->first_name    = $request->first_name;
+            $newQuestion->last_name     = $request->last_name;
+            $newQuestion->phone         = $request->country_code . '' . $request->phone;
+            $newQuestion->question      = $request->question;
             $newQuestion->save();
 
             flash()->addSuccess('Question Submitted Successfully');
-
             return redirect()->back();
-
         // return response()->json([
         //     'status' => true
         // ]);

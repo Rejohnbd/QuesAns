@@ -16,10 +16,13 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->comment('FK Host ID from table:users')->nullable();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('phone');
             $table->string('question');
-            $table->string('answer')->nullable();
             $table->tinyInteger('status')->default(0);
+            $table->dateTime('assign_time')->nullable();
+            $table->dateTime('answer_time')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

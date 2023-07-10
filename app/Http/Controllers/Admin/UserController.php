@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserCreateRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -37,9 +39,18 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
-        //
+        $newUser = new User;
+
+        $newUser->name      = $request->name;
+        $newUser->email     = $request->email;
+        $newUser->role_id   = $request->role_id;
+        $newUser->password  = Hash::make($request->password);
+        $newUser->save();
+
+        flash()->addSuccess('User Created Successfully');
+        return redirect()->route('users.index');
     }
 
     /**

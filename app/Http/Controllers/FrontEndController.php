@@ -12,6 +12,11 @@ class FrontEndController extends Controller
         return view('web.index');
     }
 
+    public function question()
+    {
+        return view('web.question');
+    }
+
     public function submitQuestion(Request $request)
     {
         $validator = validator(

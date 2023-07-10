@@ -25,6 +25,7 @@ use App\Http\Controllers\Host\QuestionController as HostQuestionController;
 */
 
 Route::get('/', [FrontEndController::class, 'index']);
+Route::get('question', [FrontEndController::class, 'question'])->name('question');
 Route::post('submit-question', [FrontEndController::class, 'submitQuestion'])->name('submit-question');
 
 // Route::get('/dashboard', function () {

@@ -3,36 +3,8 @@
 @section('title', 'Home')
 
 @section('content')
-<header class="top-navbar">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="assets/images/logo.png" alt="" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbars-host">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-
-                    <li class="nav-item"><a class="nav-link" href="teachers.html">Our Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pricing.html">Our Host</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a class="hover-btn-new log orange" href="#" data-toggle="modal" data-target="#login"><span>Question Now</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
 
 <div style="margin-top: 0px !important;" id="carouselExampleControls" class="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false">
-
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleControls" data-slide-to="1"></li>
@@ -129,24 +101,22 @@
         <div class="row align-items-center">
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="message-box">
-                    <h4>2018 BEST SmartEDU education school</h4>
-                    <h2>Welcome to SmartEDU education school</h2>
+                    <h4>BEST Islamic Question Answers</h4>
+                    <h2>Welcome to Islamic Question Answers</h2>
                     <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam
                         risus. Sed a tellus quis mi rhoncus dignissim.</p>
 
                     <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus
                         bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis
                         montes, nascetur ridiculus mus. Sed vitae rutrum neque. </p>
-
-                    <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
-                </div><!-- end messagebox -->
-            </div><!-- end col -->
+                </div>
+            </div>
 
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div class="post-media wow fadeIn">
-                    <img src="assets/images/about_02.jpg" alt="" class="img-fluid img-rounded">
-                </div><!-- end media -->
-            </div><!-- end col -->
+                    <img src="{{ asset('assets/images/qrcode.png') }}" alt="" class="img-fluid img-rounded">
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -344,70 +314,4 @@
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="widget clearfix">
-                    <div class="widget-title">
-                        <h3>About US</h3>
-                    </div>
-                    <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus
-                        bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis
-                        dis montes.</p>
-                    <div class="footer-right">
-                        <ul class="footer-links-soi">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-github"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="widget clearfix">
-                    <div class="widget-title">
-                        <h3>Information Link</h3>
-                    </div>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-xs-12">
-                <div class="widget clearfix">
-                    <div class="widget-title">
-                        <h3>Contact Details</h3>
-                    </div>
-
-                    <ul class="footer-links">
-                        <li><a href="mailto:#">info@yoursite.com</a></li>
-                        <li><a href="#">www.yoursite.com</a></li>
-                        <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-                        <li>+61 3 8376 6284</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<div class="copyrights">
-    <div class="container">
-        <div class="footer-distributed">
-            <div class="footer-center">
-                <p class="footer-company-name">All Rights Reserved. &copy; 2020 - {{date('Y')}} <a href="#">Islamic Question Answer</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
 @endsection

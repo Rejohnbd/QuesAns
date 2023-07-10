@@ -80,7 +80,7 @@
                             toastr.info('New Question Added')
                         }
 
-                        if (response.answeredQuestions < countSidebarAnsweredQues) {
+                        if (response.answeredQuestions > countSidebarAnsweredQues) {
                             toastr.success('Answered A Question')
                         }
 

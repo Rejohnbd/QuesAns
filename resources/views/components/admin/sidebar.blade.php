@@ -23,8 +23,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item @if(Request::is('users*')) menu-is-opening menu-open @endif">
+                    <a href="#" class="nav-link @if(Request::is('users*')) active @endif">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users
@@ -33,13 +33,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link">
+                            <a href="{{ route('users.index') }}" class="nav-link @if(Request::is('users')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('users.create') }}" class="nav-link @if(Request::is('users/create')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add User</p>
                             </a>

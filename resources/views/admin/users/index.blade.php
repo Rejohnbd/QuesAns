@@ -21,7 +21,7 @@
                         To Do List
                     </h3>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-sm btn-info float-right"><i class="fas fa-plus"></i> Create User</button>
+                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-info float-right"><i class="fas fa-plus"></i> Create User</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -32,7 +32,6 @@
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>User Role</th>
-                                <th>Profile Status</th>
                                 <th>Active Status</th>
                                 <th>Active</th>
                             </tr>
@@ -45,13 +44,6 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     <span class="badge @if($user->role->slug == 'admin') bg-success @elseif($user->role->slug == 'client') bg-info @else bg-warning @endif">{{ $user->role->name }}</span>
-                                </td>
-                                <td>
-                                    @if($user->profile_status)
-                                    <span class="badge bg-success">Completed</span>
-                                    @else
-                                    <span class="badge bg-danger">Incomplete</span>
-                                    @endif
                                 </td>
                                 <td>
                                     @if($user->active_status)
